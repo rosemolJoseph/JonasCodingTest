@@ -5,8 +5,8 @@ namespace BusinessLayer.Model.Interfaces
 {
     public interface IEmployeeService
     {
-        IEnumerable<CompanyInfo> GetAllEmployee();
-        CompanyInfo GetEmployeeByCode(string employeeCode);
-        bool SaveEmployeeDetails(EmployeeInfo companyInfo);
+        IEnumerable<EmployeeInfo> GetAllEmployee();
+        EmployeeInfo GetEmployeeByCode(string employeeCode);
+        bool SaveEmployeeDetails(EmployeeInfo employeeInfo);
     }
 }
