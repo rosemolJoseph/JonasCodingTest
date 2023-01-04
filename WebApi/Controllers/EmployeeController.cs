@@ -11,17 +11,25 @@ namespace WebApi.Controllers
     {
         private readonly IEmployeeService _employeeService;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public EmployeeController(IEmployeeService employeeService, IMapper mapper)
+        public EmployeeController(IEmployeeService employeeService, IMapper mapper, ILogger logger)
         {
             _employeeService = employeeService;
             _mapper = mapper;
+            _logger = logger;
         }
         // GET api/<controller>
         public async IEnumerable<EmployeeDto> GetAll()
         {
+        try{
             var items = await _employeeService.GetAllEmployees();
             return _mapper.Map<IEnumerable<EmployeeDto>>(items);
+            }
+            catch(Exception e)
+            {
+            _logger.log("Exception",e);
+            }
         }
 
         // GET api/<controller>/5
